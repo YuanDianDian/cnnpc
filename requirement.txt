@@ -1,0 +1,5 @@
+tensorflow = 1.12.0
+pandas >= 0.25.3 
+sklearn >= 0.0 
+pymysql >=  0.9.3 
+openpyxl >= 3.0.0  
