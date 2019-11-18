@@ -90,8 +90,8 @@ def main(input_A, is_warmup=False):
         all_latency, best_deploy = get_T(L_temp, rate_temp, for_minT=False)
     add_logs(all_latency)
 
-    result = "When T0 is " + str(T0) + "\n"
-    result += "Best point:" + str(L_temp) + " " + str(rate_temp) + " " +str(T) + "\n"
+    result = "When T0 is " + str(A0) + "\n"
+    result += "Best point:" + str(L_temp) + " " + str(rate_temp) + " " +str(A) + "\n"
     result += "The deployment way:" + best_deploy
     with open('result.txt', 'w+') as f:
         f.write(result)
