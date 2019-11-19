@@ -15,22 +15,22 @@ if __name__ == '__main__':
 
     model = args.model
     end_device = args.end_device
-    args.bandwith = args.bandwith
+    args.bandwith = args.bandwidth
 
     set_model(model) # create set.txt
     partitions_init(model)
     os.system('cp ./R-C-Time/'+model+'/TR-'+end_device+'/T_R.npy ./model_profile/T_R.npy')
-    os.system('cp ./R-C-Time/'+model+'/TC-20M-'+bandwith+'M/T_C.npy ./model_profile/T_C.npy')
+    os.system('cp ./R-C-Time/'+model+'/TC-20M-'+bandwidth+'M/T_C.npy ./model_profile/T_C.npy')
 
     if args.Accuracy:
         cnnpc_for_t.main(float(args.Accuracy))
-        os.system('mv ./process.txt ./result/'+model+'/'+end_device+'-20M-'+bandwith+'M/process-'+args.Accuracy+'.txt')
-        os.system('mv ./result.txt ./result/'+model+'/'+end_device+'-20M-'+bandwith+'M/result-'+args.Accuracy+'.txt')        
+        os.system('mv ./process.txt ./result/'+model+'/'+end_device+'-20M-'+bandwidth+'M/process-'+args.Accuracy+'.txt')
+        os.system('mv ./result.txt ./result/'+model+'/'+end_device+'-20M-'+bandwidth+'M/result-'+args.Accuracy+'.txt')        
 
     if args.Latency:
         cnnpc_for_t.main(float(args.Latency))
-        os.system('mv ./process.txt ./result/'+model+'/'+end_device+'-20M-'+bandwith+'M/process-'+args.Latency+'.txt')
-        os.system('mv ./result.txt ./result/'+model+'/'+end_device+'-20M-'+bandwith+'M/result-'+args.Latency+'.txt')        
+        os.system('mv ./process.txt ./result/'+model+'/'+end_device+'-20M-'+bandwidth+'M/process-'+args.Latency+'.txt')
+        os.system('mv ./result.txt ./result/'+model+'/'+end_device+'-20M-'+bandwidth+'M/result-'+args.Latency+'.txt')        
 
 
 
