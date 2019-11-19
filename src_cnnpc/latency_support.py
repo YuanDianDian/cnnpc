@@ -31,9 +31,7 @@ def min_cnnpc_T(for_minT=False):
     for i in range(num):
         p = [i]
         r = [1 - 1.0 / a[1][i]]
-        # print(r)
         t = get_T(p, r)
-        # print(t)
         if t < T:
             T = t
             parts = p
@@ -42,7 +40,6 @@ def min_cnnpc_T(for_minT=False):
             p = [i, j]
             r = [1 - 1.0 / a[1][i], 1 - 1.0 / a[1][j]]
             t = get_T(p, r)
-            # print(t)
             if t < T:
                 T = t
                 parts = p
