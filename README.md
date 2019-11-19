@@ -20,7 +20,7 @@ Install all the packages from requirment.txt
 cd SQL-file
 mysql -u'user' -p'123456' cnnpc < db.sql;
 ```
-    Attention: replace user and 123456 with you own account and password<br>
+    Attention: replace user and 123456 with you own account and password
 4. Edit the account and password to yours in ./src_cnnpc/mysql_support.py (line 17)
 5. Execute:
 ```
