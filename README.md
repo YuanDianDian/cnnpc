@@ -27,9 +27,9 @@ mysql -u'user' -p'123456' cnnpc < db.sql;
 chmod 777 ./scripts/run_local.sh
 ```
 #### Run
-According to your needs to modify auto.py, execute:
+According to your needs to modify auto.py, you can execute like this:
 ```
-python auto.py
+python auto.py --model=mobilenet --end_device=MI8 --bandwidth=10 --A0=0.896
 ```
 
 ## Result
