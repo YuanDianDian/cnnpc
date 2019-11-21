@@ -1,7 +1,9 @@
 import cnnpc_main_T0 as cnnpc_for_acc
 import cnnpc_main_A0 as cnnpc_for_t
 import os
+from src_cnnpc.tools import partitions_init
 
+partitions_init(resnet)
 
 def group_for_acc(end, w, Ts):
     '''
@@ -54,6 +56,8 @@ if __name__ == '__main__':
     # 60.3936  49.3675 38.3414  MiSE 20M 10M
     # 60.431   49.4423 38.4535  MiSE 20M 5M
     # 60.7301  50.0404 39.3508  MiSE 20M 1M
+
+    # resnet
 
     # MI8 
     os.system('cp ./R-C-Time/TR-MI8/T_R.npy ./model_profile/T_R.npy')

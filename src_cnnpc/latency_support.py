@@ -1,6 +1,6 @@
 import numpy as np
 
-def min_profile_T():
+def min_profile_T_():
     '''find the minimum latency when only use one device
 
     Returns:
@@ -13,6 +13,37 @@ def min_profile_T():
     T_cloud= sum(T_R[:,2])+T_C[0,1]+0.53+1.13
     return min(T_end, T_cloud, T_edge)
 
+def min_profile_T():
+    '''find the minimum latency with Neurosurgeon
+
+    Returns:
+    * Latency: the minimum latency when only use one device
+    ''' 
+    a = np.load("./model_profile/partitions.npy")
+    num = a.shape[1]
+    T = 1000.0
+    parts = []
+    rates = []
+    for i in range(num):
+        p = [i]
+        r = [0.0]
+        t = get_T(p, r)
+        if t < T:
+            T = t
+            parts = p
+            rates = r
+        for j in range(i, num):
+            p = [i, j]
+            r = [0.0, 0.0]
+            t = get_T(p, r)
+            if t < T:
+                T = t
+                parts = p
+                rates = r
+    if for_minT:
+        return T
+    else:
+        return str(T)+str(parts)+str(rates)
 
 def min_cnnpc_T(for_minT=False):
     '''find the minimum time by algorithm

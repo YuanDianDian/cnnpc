@@ -2,7 +2,7 @@ import numpy as np
 import src_cnnpc.CRS as CRS
 from src_cnnpc.R_support import create_R, update_R, nextPoint_R, get_R, update_R_CAE
 from src_cnnpc.latency_support import min_profile_T, get_T, cnnpc_latency_range 
-from src_cnnpc.tools import add_logs
+from src_cnnpc.tools import add_logs, turn_r_L
 
 def main(input_T, is_warmup=False):
     '''main function
@@ -43,7 +43,7 @@ def main(input_T, is_warmup=False):
             rate_temp = [rate_min, 0.0]
             A = a
             logs = "------Best point changed!------\n"
-            logs += "New Best Partitions: " + str(L_temp) + "\n"
+            logs += "New Best Partitions: " + str(turn_r_L(L_temp)) + "\n"
             logs += "New Best Compression Rate: " + str(rate_temp) + "\n"
             logs += "New Best Accuracy: " + str(A) + "\n"
             add_logs(logs)
@@ -69,23 +69,23 @@ def main(input_T, is_warmup=False):
                         L_temp = [i , j]
                         A = A_
                         logs = "------Best point changed!------\n"
-                        logs += "New Best Partitions: " + str(L_temp) + "\n"
+                        logs += "New Best Partitions: " + str(turn_r_L(L_temp)) + "\n"
                         logs += "New Best Compression Rate: " + str(rate_temp) + "\n"
                         logs += "New Best Accuracy: " + str(A) + "\n"
                         add_logs(logs)
                 add_logs('For update_R_CAE')
                 update_R_CAE(i, j, rate_2, A)  # update solution space R 
 
-    add_logs("Best point:" + str(L_temp) + " " + str(rate_temp) + " " +str(A) + "\n")
+    add_logs("Best point:" + str(turn_r_L(L_temp)) + " " + str(rate_temp) + " " +str(A) + "\n")
 
     if L_temp[0] >= L_temp[1] and rate_temp[0] >= rate_temp[1]: # get the number of compression layer
-        all_latency, best_deploy = get_T([L_temp[0]], [rate_temp[0]], for_minT=False)
+        all_latency, best_deploy = get_T([turn_r_L(L_temp)[0]], [rate_temp[0]], for_minT=False)
     else:
-        all_latency, best_deploy = get_T(L_temp, rate_temp, for_minT=False)
+        all_latency, best_deploy = get_T(turn_r_L(L_temp), rate_temp, for_minT=False)
     add_logs(all_latency)
 
     result = "When T0 is " + str(T0) + "\n"
-    result += "Best point:" + str(L_temp) + " " + str(rate_temp) + " " +str(A) + "\n"
+    result += "Best point:" + str(turn_r_L(L_temp)) + " " + str(rate_temp) + " " +str(A) + "\n"
     result += "The deployment way:" + best_deploy
     with open('result.txt', 'w+') as f:
         f.write(result)
