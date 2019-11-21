@@ -160,7 +160,7 @@ def save_result_to_sql():
                     if not not check_exist:
                         continue
                     sql.save_result(int(temp1[1]),float(temp3[2]),int(temp1[3]),float(temp3[3]),float(temp2),model_dir) # here, the compression rate is the number of pruning channel
-                    with open('process.txt', 'a+') as f:
-                        f.write("PocketFlow-get: %d %.6f %d %.6f" % (int(temp1[1]),float(temp1[2]),int(temp1[3]),float(temp1[4])) + "\n")
+                    # with open('process.txt', 'a+') as f:
+                    #     f.write("PocketFlow-get: %d %.6f %d %.6f" % (int(temp1[1]),float(temp1[2]),int(temp1[3]),float(temp1[4])) + "\n")
     return 0
 

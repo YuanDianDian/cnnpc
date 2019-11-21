@@ -9,8 +9,8 @@ def min_profile_T():
     T_R = np.load("./model_profile/T_R.npy") # running time of each layer on every device 
     T_C = np.load("./model_profile/T_C.npy") #transmittion time of each layer between every two devices 
     T_end= sum(T_R[:,0])+0.53+1.127
-    T_edge= sum(T_R[:,1])+T_C[0,0]+0.53+1.127
-    T_cloud= sum(T_R[:,2])+T_C[0,1]+0.53+1.127
+    T_edge= sum(T_R[:,1])+T_C[0,0]+0.53+1.13
+    T_cloud= sum(T_R[:,2])+T_C[0,1]+0.53+1.13
     return min(T_end, T_cloud, T_edge)
 
 
@@ -80,16 +80,16 @@ def get_T(com, rate, for_minT=True):
     best_deploy = 'end-edge-cloud'
     if len(com)==2 and com[0]!=com[1]:
         T = sum(T_R[0:com[0] + 1, 0]) + sum(T_R[com[0] + 1:com[1] + 1, 1]) + sum(T_R[com[1] + 1:len(T_R) + 1, 2]) + T_C[
-            com[0] + 1, 0] * (1 - rate[0]) + T_C[com[1] + 1, 1] * (1 - rate[1])+0.53+1.127
+            com[0] + 1, 0] * (1 - rate[0]) + T_C[com[1] + 1, 1] * (1 - rate[1])+0.53+1.13
         temp = 'end-edge-cloud: ' + str(T)
         best_deploy = 'end-edge-cloud'
     else:
         T1 = sum(T_R[0:com[0] + 1, 0]) + sum(T_R[com[0] + 1:len(T_R) + 1, 1]) + T_C[com[0] + 1, 0] * (
-                    1 - rate[0])+0.53+1.127  # end-edge inference time
+                    1 - rate[0])+0.53+1.13  # end-edge inference time
         T2 = sum(T_R[0:com[0] + 1, 0]) + sum(T_R[com[0] + 1:len(T_R) + 1, 2]) + (
-                    T_C[com[0] + 1, 0] + T_C[com[0] + 1, 1]) * (1 - rate[0])+0.53+1.127  # end-cloud inference time
+                    T_C[com[0] + 1, 0] + T_C[com[0] + 1, 1]) * (1 - rate[0])+0.53+1.13  # end-cloud inference time
         T3 = sum(T_R[0:com[0] + 1, 1]) + sum(T_R[com[0] + 1:len(T_R) + 1, 2]) + T_C[com[0] + 1, 1] * (1 - rate[0]) + \
-             T_C[0, 0]+0.53+1.127  # edge-cloud inference time
+             T_C[0, 0]+0.53+1.13  # edge-cloud inference time
         T= min(T1,T2,T3)
 
         if not for_minT:
