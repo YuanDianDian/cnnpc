@@ -38,7 +38,7 @@ CREATE TABLE `resnet_search` (
 
 LOCK TABLES `resnet_search` WRITE;
 /*!40000 ALTER TABLE `resnet_search` DISABLE KEYS */;
-INSERT INTO `resnet_search` VALUES (0,0,0,0,89.418,NULL);
+INSERT INTO `resnet_search` VALUES (0,0,0,0,89.5,NULL);
 /*!40000 ALTER TABLE `resnet_search` ENABLE KEYS */;
 UNLOCK TABLES;
 

@@ -112,7 +112,7 @@ def execute_inference(com1,com2,nearest):
         count=count+1
         
         # start to prune
-        os.system('./scripts/run_local.sh nets/'+ net_name +'_at_ilsvrc12_run.py  \ --learner channel \ --cp_prune_option list \ --cp_prune_list_file ./ratio.list \ --save_step 1000  \ --enbl_warm_start True') # 4000
+        os.system('./scripts/run_local.sh nets/'+ net_name +'_at_ilsvrc12_run.py  \ --learner channel \ --cp_prune_option list \ --cp_prune_list_file ./ratio.list \ --save_step 4000  \ --enbl_warm_start True') # 4000
         
         # save the training result, including models and logs
         os.system('mkdir '+listname.rstrip('.list\n'))
