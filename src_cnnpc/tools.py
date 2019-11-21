@@ -11,6 +11,14 @@ def add_logs(lines):
     print(lines)
 
 
+def get_net_name():
+    f = open('set.txt','r')
+    init_set = f.readline()
+    f.close()
+    net_name = init_set.rstrip('\n')
+    return  net_name
+
+
 def partitions_init(model):
 
     resnet_partitions = [[1,  6,  11,  16],

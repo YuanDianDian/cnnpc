@@ -4,6 +4,7 @@ import re
 import numpy as np
 from src_cnnpc.mysql_support import MySQL
 from src_cnnpc import pocketflow_acc
+from src_cnnpc import tools
 
 def run_cmd2file(cmd, listname):
     '''Save the inference output to file
@@ -28,7 +29,7 @@ def create_ratio_list():
     f=open('ratio.txt','r')
     rlist=f.readlines()
     f.close()
-    net_name = get_net_name()
+    net_name = tools.get_net_name()
     count=0
 
     for i in rlist: # the form of i is a-b. a is the amount of partition point. b includes the number of partition point and compress ratio,                     which has a form: number-ratio
@@ -65,7 +66,7 @@ def execute_inference(com1,com2,nearest):
     '''
     # init count
     count=1
-    net_name = get_net_name()
+    net_name = tools.get_net_name()
     # find the ratio.list in this loop
     rootdir=os.getcwd()
     listnames= os.listdir(rootdir+'/list')
@@ -132,7 +133,7 @@ def save_result_to_sql():
     count=0
     f_name=f.readlines()
     f.close()
-    net_name = get_net_name()
+    net_name = tools.get_net_name()
     pattern=re.compile(net_name)
     cp=os.path.abspath('.')
     name_list=os.listdir(cp)
@@ -163,9 +164,3 @@ def save_result_to_sql():
                         f.write("PocketFlow-get: %d %.6f %d %.6f" % (int(temp1[1]),float(temp1[2]),int(temp1[3]),float(temp1[4])) + "\n")
     return 0
 
-def get_net_name():
-    f = open('set.txt','r')
-    init_set = f.readline()
-    f.close()
-    net_name = init_set.rstrip('\n')
-    return  net_name

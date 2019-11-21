@@ -1,5 +1,6 @@
 import pymysql
 import openpyxl
+from src_cnnpc import tools
 
 class MySQL:
     '''
@@ -23,8 +24,11 @@ class MySQL:
         self.severIp = severIp
         self.password = password
         self.database = database
-        self.table = table
+        # self.table = table
         self.user = user
+
+        table = tools.get_net_name() + '_search'
+        self.table = table
 
     def SQL_connect(self):
         '''connect to your server'''
