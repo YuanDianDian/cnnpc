@@ -32,7 +32,7 @@ def create_ratio_list():
     net_name = tools.get_net_name()
     count=0
 
-    for i in rlist: # the form of i is a-b. a is the amount of partition point. b includes the number of partition point and compress ratio,                     which has a form: number-ratio
+    for i in rlist: # the form of i is a-b. a is the amount of partition point. b includes the number of partition point and compress ratio, which has a form: number-ratio
         temp=i.split('-')
         amount=int(temp[0]) # amount of partition point
         number=[] # number of partition point
