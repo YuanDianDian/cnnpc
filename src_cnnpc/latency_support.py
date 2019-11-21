@@ -40,7 +40,7 @@ def min_profile_T():
                 T = t
                 parts = p
                 rates = r
-
+    T = min(T, min_profile_T_())
     return T
 
 
