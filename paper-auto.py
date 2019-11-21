@@ -3,7 +3,8 @@ import cnnpc_main_A0 as cnnpc_for_t
 import os
 from src_cnnpc.tools import partitions_init
 
-partitions_init(resnet)
+model = 'resnet' # or 'mobilenet'
+partitions_init(model)
 
 def group_for_acc(end, w, Ts):
     '''
@@ -12,19 +13,19 @@ def group_for_acc(end, w, Ts):
     * w: a float, bandwith between edge and cloud
     * Ts: a list, given latency
     '''
-    os.system('cp ./R-C-Time/TC-20M-'+str(w)+'M/T_C.npy ./model_profile/T_C.npy')
+    os.system('cp ./R-C-Time/'+model+'/TC-20M-'+str(w)+'M/T_C.npy ./model_profile/T_C.npy')
 
     cnnpc_for_acc.main(Ts[0])
-    os.system('mv ./process.txt ./result/'+end+'-20M-'+str(w)+'M/process-'+str(Ts[0])+'.txt')
-    os.system('mv ./result.txt ./result/'+end+'-20M-'+str(w)+'M/result-'+str(Ts[0])+'.txt')
+    os.system('mv ./process.txt ./result/'+model+'/'+end+'-20M-'+str(w)+'M/process-'+str(Ts[0])+'.txt')
+    os.system('mv ./result.txt ./result/'+model+'/'+end+'-20M-'+str(w)+'M/result-'+str(Ts[0])+'.txt')
 
     cnnpc_for_acc.main(Ts[1])
-    os.system('mv ./process.txt ./result/'+end+'-20M-'+str(w)+'M/process-'+str(Ts[1])+'.txt')
-    os.system('mv ./result.txt ./result/'+end+'-20M-'+str(w)+'M/result-'+str(Ts[1])+'.txt')
+    os.system('mv ./process.txt ./result/'+model+'/'+end+'-20M-'+str(w)+'M/process-'+str(Ts[1])+'.txt')
+    os.system('mv ./result.txt ./result/'+model+'/'+end+'-20M-'+str(w)+'M/result-'+str(Ts[1])+'.txt')
 
     cnnpc_for_acc.main(Ts[2])
-    os.system('mv ./process.txt ./result/'+end+'-20M-'+str(w)+'M/process-'+str(Ts[2])+'.txt')
-    os.system('mv ./result.txt ./result/'+end+'-20M-'+str(w)+'M/result-'+str(Ts[2])+'.txt')
+    os.system('mv ./process.txt ./result/'+model+'/'+end+'-20M-'+str(w)+'M/process-'+str(Ts[2])+'.txt')
+    os.system('mv ./result.txt ./result/'+model+'/'+end+'-20M-'+str(w)+'M/result-'+str(Ts[2])+'.txt')
 
 
 def group_for_t(end, w, Accs):
@@ -34,15 +35,15 @@ def group_for_t(end, w, Accs):
     * w: a float, bandwith between edge and cloud
     * Accs: a list, given accuracy
     '''
-    os.system('cp ./R-C-Time/TC-20M-'+str(w)+'M/T_C.npy ./model_profile/T_C.npy')
+    os.system('cp ./R-C-Time/'+model+'/TC-20M-'+str(w)+'M/T_C.npy ./model_profile/T_C.npy')
 
     cnnpc_for_t.main(Accs[0])
-    os.system('mv ./process.txt ./result/'+end+'-20M-'+str(w)+'M/process-'+str(Accs[0])+'.txt')
-    os.system('mv ./result.txt ./result/'+end+'-20M-'+str(w)+'M/result-'+str(Accs[0])+'.txt')
+    os.system('mv ./process.txt ./result/'+model+'/'+end+'-20M-'+str(w)+'M/process-'+str(Accs[0])+'.txt')
+    os.system('mv ./result.txt ./result/'+model+'/'+end+'-20M-'+str(w)+'M/result-'+str(Accs[0])+'.txt')
 
     cnnpc_for_t.main(Accs[1])
-    os.system('mv ./process.txt ./result/'+end+'-20M-'+str(w)+'M/process-'+str(Accs[1])+'.txt')
-    os.system('mv ./result.txt ./result/'+end+'-20M-'+str(w)+'M/result-'+str(Accs[1])+'.txt')
+    os.system('mv ./process.txt ./result/'+model+'/'+end+'-20M-'+str(w)+'M/process-'+str(Accs[1])+'.txt')
+    os.system('mv ./result.txt ./result/'+model+'/'+end+'-20M-'+str(w)+'M/result-'+str(Accs[1])+'.txt')
     
 
 
@@ -60,7 +61,7 @@ if __name__ == '__main__':
     # resnet
 
     # MI8 
-    os.system('cp ./R-C-Time/TR-MI8/T_R.npy ./model_profile/T_R.npy')
+    os.system('cp ./R-C-Time/'+model+'/TR-MI8/T_R.npy ./model_profile/T_R.npy')
 
     Ts = [66.133125, 52.18065, 38.228175]
     group_for_acc('MI8', 10, Ts)
@@ -72,7 +73,7 @@ if __name__ == '__main__':
     group_for_acc('MI8', 1, Ts)
 
     # MI8SE 
-    os.system('cp ./R-C-Time/TR-MI8SE/T_R.npy ./model_profile/T_R.npy')
+    os.system('cp ./R-C-Time/'+model+'/TR-MI8SE/T_R.npy ./model_profile/T_R.npy')
 
     Ts = [70.14935,  55.87134, 41.59332]
     group_for_acc('MI8SE', 10, Ts)
@@ -85,7 +86,7 @@ if __name__ == '__main__':
 
 
     # MI8 
-    os.system('cp ./R-C-Time/TR-MI8/T_R.npy ./model_profile/T_R.npy')
+    os.system('cp ./R-C-Time/'+model+'/TR-MI8/T_R.npy ./model_profile/T_R.npy')
     # original accuracy 0.906
     Accs = [0.896, 0.856]
     group_for_t('MI8', 10, Accs)
@@ -93,7 +94,7 @@ if __name__ == '__main__':
     group_for_t('MI8', 1, Accs)
 
     # MI8SE 
-    os.system('cp ./R-C-Time/TR-MI8SE/T_R.npy ./model_profile/T_R.npy')
+    os.system('cp ./R-C-Time/'+model+'/TR-MI8SE/T_R.npy ./model_profile/T_R.npy')
     # original accuracy 0.906
     Accs = [0.896, 0.856]
     group_for_t('MI8SE', 10, Accs)
