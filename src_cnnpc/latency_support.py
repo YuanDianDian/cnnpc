@@ -40,10 +40,9 @@ def min_profile_T():
                 T = t
                 parts = p
                 rates = r
-    if for_minT:
-        return T
-    else:
-        return str(T)+str(parts)+str(rates)
+
+    return T
+
 
 def min_cnnpc_T(for_minT=False):
     '''find the minimum time by algorithm

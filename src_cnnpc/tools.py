@@ -40,11 +40,11 @@ def partitions_init(model):
         np.save('./model_profile/partitions.npy', np.asarray(resnet_partitions))
 
 
-def turn_r_L(L)
+def turn_r_L(L):
 
     L_partition = np.load("./model_profile/partitions.npy")
 
-    r_L0 = L_partition[0][l[0]]
-    r_L1 = L_partition[0][l[1]]
+    r_L0 = L_partition[0][L[0]]
+    r_L1 = L_partition[0][L[1]]
 
     return [r_L0, r_L1]
