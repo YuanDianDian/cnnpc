@@ -3,6 +3,10 @@
 We proposed CNNPC, a distributed collaborative system based on the model compression and on-device deployment methods, to inference CNN with high accuracy and low latency. CNNPC achieves this goal by three parts: the distributed nature, a model compression method and a search algorthim. The distributed nature of CNNPC ensures the data privacy, the model compression method driven by communication reduce transmission latency significantly and the search algorthim finds the best compression and deployment strategy which gets the largest latency reduction with least accuracy loss. In our experiments, comprared with single-end and state-of-the-art collaborative approaches, collaborative inference latency is up to 6.1x and 4.1x faster, and communication requirements are reduced by a factor of 45.6x and 16.5x respectively in CNNPC.
 
 ## Structure
+<p align="center">
+  <img height="300" src="./data_samples/samples/structure.jpg">
+</p>
+
 
 ## Dependencies
 * tensorflow = 1.12.0
