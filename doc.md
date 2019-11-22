@@ -20,7 +20,7 @@ A0, T0 分别对应于给定精度约束求最低时延和给定时延约束求�
 该文件夹下主要存储由上一环节model profiling得到的一些模型特性，如模型各层通信量的传输时间T_C.npy，模型各层在各设备上的运行时间T_R.npy，以及模型的可选分割层以及其对应通道数partitions.npy等。
 
 ## 附：函数列表
-####CRS.py:
+#### CRS.py:
 1.	get_descrete_point(input_rate, r) 
 将理论压缩率转化为实际的离散的压缩率, 返回索引
 2.	get_acc(com1, rate1, com2 = 0, rate2 = -1.0)
