@@ -4,7 +4,7 @@ We proposed CNNPC, a distributed collaborative system based on the model compres
 
 ## Structure
 <p align="center">
-  <img height="300" src="./data_samples/samples/structure.jpg">
+  <img height="300" src="./samples/structure.jpg">
 </p>
 
 
