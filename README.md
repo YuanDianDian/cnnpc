@@ -14,7 +14,7 @@ We proposed CNNPC, a distributed collaborative system based on the model compres
 * sklearn >= 0.0 
 * pymysql >=  0.9.3 
 * openpyxl >= 3.0.0 
-* mysql >= 15.6+
+* mysql >= 5.6+
 
 ## Data Resource
 * Experiments are running on the dataset ImageNet
