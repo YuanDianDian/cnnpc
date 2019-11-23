@@ -59,47 +59,54 @@ if __name__ == '__main__':
     # 60.7301  50.0404 39.3508  MiSE 20M 1M
 
     # resnet
+    # 80.598775 62.25955 43.920325
+    # 81.211275 63.48455 45.757825
+    # 83.555675 68.17335 52.791025
+
+    # 83.1354   67.3328  51.5302
+    # 83.7479   68.5578  53.3677
+    # 86.0923   73.2466  60.4009
 
     # MI8 
     os.system('cp ./R-C-Time/'+model+'/TR-MI8/T_R.npy ./model_profile/T_R.npy')
-
-    Ts = [66.133125, 52.18065, 38.228175]
-    group_for_acc('MI8', 10, Ts)
-
-    Ts = [66.1750,   52.2554,  38.3403]
-    group_for_acc('MI8', 5, Ts)
-
-    Ts = [66.469575, 52.85355, 39.237525]
-    group_for_acc('MI8', 1, Ts)
-
-    # MI8SE 
-    os.system('cp ./R-C-Time/'+model+'/TR-MI8SE/T_R.npy ./model_profile/T_R.npy')
-
-    Ts = [70.14935,  55.87134, 41.59332]
-    group_for_acc('MI8SE', 10, Ts)
-
-    Ts = [70.186735, 55.94609, 41.705445]
-    group_for_acc('MI8SE', 5, Ts)
-
-    Ts = [70.485581, 56.54424, 42.60267]
-    group_for_acc('MI8SE', 1, Ts)
-
-
-    # MI8 
-    os.system('cp ./R-C-Time/'+model+'/TR-MI8/T_R.npy ./model_profile/T_R.npy')
-    # original accuracy 0.906
-    Accs = [0.896, 0.856]
+    # original accuracy 0.906/mobilenet 0.895/resnet
+    Accs = [0.845, 0.885]
     group_for_t('MI8', 10, Accs)
     group_for_t('MI8', 5, Accs)
     group_for_t('MI8', 1, Accs)
 
     # MI8SE 
     os.system('cp ./R-C-Time/'+model+'/TR-MI8SE/T_R.npy ./model_profile/T_R.npy')
-    # original accuracy 0.906
-    Accs = [0.896, 0.856]
+    # original accuracy 0.906/mobilenet 0.895/resnet
+    Accs = [0.845, 0.885]
     group_for_t('MI8SE', 10, Accs)
     group_for_t('MI8SE', 5, Accs)
     group_for_t('MI8SE', 1, Accs)
+
+
+    # MI8 
+    os.system('cp ./R-C-Time/'+model+'/TR-MI8/T_R.npy ./model_profile/T_R.npy')
+
+    Ts = [80.598775, 62.25955, 43.920325]
+    group_for_acc('MI8', 10, Ts)
+
+    Ts = [81.211275, 63.48455, 45.757825]
+    group_for_acc('MI8', 5, Ts)
+
+    Ts = [83.555675, 68.17335, 52.791025]
+    group_for_acc('MI8', 1, Ts)
+
+    # MI8SE 
+    os.system('cp ./R-C-Time/'+model+'/TR-MI8SE/T_R.npy ./model_profile/T_R.npy')
+
+    Ts = [83.1354, 67.3328, 51.5302]
+    group_for_acc('MI8SE', 10, Ts)
+
+    Ts = [83.7479, 68.5578, 53.3677]
+    group_for_acc('MI8SE', 5, Ts)
+
+    Ts = [86.0923, 73.2466, 60.4009]
+    group_for_acc('MI8SE', 1, Ts)
 
 
 
