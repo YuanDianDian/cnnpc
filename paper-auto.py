@@ -4,6 +4,8 @@ import os
 from src_cnnpc.tools import partitions_init
 
 model = 'resnet' # or 'mobilenet'
+with open('set.txt', 'w+') as f:
+    f.write(model)
 partitions_init(model)
 
 def group_for_acc(end, w, Ts):
