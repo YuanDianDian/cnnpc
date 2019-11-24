@@ -79,9 +79,9 @@ def main(input_T, is_warmup=False):
     add_logs("Best point:" + str(turn_r_L(L_temp)) + " " + str(rate_temp) + " " +str(A) + "\n")
 
     if L_temp[0] >= L_temp[1] and rate_temp[0] >= rate_temp[1]: # get the number of compression layer
-        all_latency, best_deploy = get_T([turn_r_L(L_temp)[0]], [rate_temp[0]], for_minT=False)
+        all_latency, best_deploy = get_T([L_temp[0]], [rate_temp[0]], for_minT=False)
     else:
-        all_latency, best_deploy = get_T(turn_r_L(L_temp), rate_temp, for_minT=False)
+        all_latency, best_deploy = get_T(L_temp, rate_temp, for_minT=False)
     add_logs(all_latency)
 
     result = "When T0 is " + str(T0) + "\n"
