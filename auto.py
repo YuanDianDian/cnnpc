@@ -1,13 +1,8 @@
 import cnnpc_main_T0 as cnnpc_for_acc
 import cnnpc_main_A0 as cnnpc_for_t
-from src_cnnpc.tools import partitions_init
+from src_cnnpc.tools import partitions_init, set_model
 
 from options import args_parser
-import os
-
-def set_model(model):
-    with open('set.txt', 'w+') as f:
-        f.write(model)
     
 if __name__ == '__main__':
     

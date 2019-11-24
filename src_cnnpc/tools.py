@@ -1,4 +1,5 @@
 import numpy as np
+import os
 
 def add_logs(lines):
     '''add logs to file
@@ -19,11 +20,17 @@ def get_net_name():
     return  net_name
 
 
+def set_model(model):
+    os.system('cp -r ./learners/channel_pruning_'+model+'/* ./learners/channel_pruning')
+    with open('set.txt', 'w+') as f:
+        f.write(model)
+
+
 def partitions_init(model):
 
     resnet_partitions = [[1,  6,  11,  16],
                          [64, 64, 128, 256],
-                         [3,  13, 23,  33]]
+                         [1,  6,  11,  16]] # [3,  13, 23,  33]]
 
     mobilenet_partitions = [[0,  1,  3,  6,  10, 13,  16],
                             [32, 16, 24, 32, 64, 96, 160],

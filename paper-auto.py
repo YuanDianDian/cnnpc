@@ -1,11 +1,10 @@
 import cnnpc_main_T0 as cnnpc_for_acc
 import cnnpc_main_A0 as cnnpc_for_t
 import os
-from src_cnnpc.tools import partitions_init
+from src_cnnpc.tools import partitions_init, set_model
 
 model = 'resnet' # or 'mobilenet'
-with open('set.txt', 'w+') as f:
-    f.write(model)
+set_model(model)
 partitions_init(model)
 
 def group_for_acc(end, w, Ts):
