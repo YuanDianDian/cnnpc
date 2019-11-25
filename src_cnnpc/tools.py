@@ -44,7 +44,7 @@ def partitions_init(model):
         np.save('./model_profile/partitions.npy', np.asarray(resnet_partitions))
 
     if model == 'mobilenet':
-        np.save('./model_profile/partitions.npy', np.asarray(resnet_partitions))
+        np.save('./model_profile/partitions.npy', np.asarray(mobilenet_partitions))
 
 
 def turn_r_L(L):

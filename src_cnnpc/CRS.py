@@ -81,7 +81,7 @@ def CRS_next(r, A0, com1, com2, rate_input, wh, index1, index2, acc1, acc2):
     print(index1, index2, acc1, acc2)
     k = (A0 - acc1) * (r[index2] - r[index1]) / (acc2 - acc1) + r[index1] # get a new rate by linear estimation
     num = len(r)
- 
+    index = get_descrete_point(k, r)   
     # if the new rate exceeds the range of r, we get a new rate by dichotomy
     [bound1, bound2]= get_r_range(r)
     if k <= r[bound1] or k >= r[bound2]:
