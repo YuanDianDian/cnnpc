@@ -56,10 +56,11 @@ def update_R_CAE(com1, com2, rate2, A):
     n_1 = round(rate2 * R.shape[1]) # the number of residual channel at com2 layer
     for i in range(1, R.shape[0]):
         for j in range(1, R.shape[1]):
-            if(j > n_1 and CRS.CAE(com1, i / R.shape[0], com2, j / R.shape[1]) > A):
-                pass
-            else:
-                R[i][j] = False
+            if R[i][j]:
+                if(j > n_1 and CRS.CAE(com1, i / R.shape[0], com2, j / R.shape[1]) > A):
+                    pass
+                else:
+                    R[i][j] = False
     np.save(filename, R)
 
 def nextPoint_R(com1, com2):
