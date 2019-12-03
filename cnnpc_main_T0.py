@@ -73,7 +73,7 @@ def main(input_T, is_warmup=False):
                         logs += "New Best Compression Rate: " + str(rate_temp) + "\n"
                         logs += "New Best Accuracy: " + str(A) + "\n"
                         add_logs(logs)
-                add_logs('For update_R_CAE')
+                add_logs('For update_R_CAE\n')
                 update_R_CAE(i, j, rate_2, A)  # update solution space R 
 
     add_logs("Best point:" + str(turn_r_L(L_temp)) + " " + str(rate_temp) + " " +str(A) + "\n")
